@@ -971,10 +971,15 @@ async def get_video(id: str, quality: int = Query(1080)):
         return {"url": cached['url'], "quality": quality}
     video_url = f"https://www.youtube.com/watch?v={id}"
     fmt = '22/18/best[ext=mp4]/best'
+    cookie_path = os.path.join(os.path.dirname(__file__), "cookies.txt")
     ydl_opts = {
     'format': 'bestaudio/best',
-    'cookiefile': 'cookies.txt',
+    'cookiefile': cookie_path,
     'quiet': True,
+    'extractor_args': {
+        'youtube': {
+            'player_client': ['web_safari', 'web', 'android', 'ios'],
+
     'noplaylist': True,
     'cachedir': False,
     'youtube_include_dash_manifest': False,
