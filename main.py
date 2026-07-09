@@ -973,7 +973,7 @@ async def get_video(id: str, quality: int = Query(1080)):
     fmt = '22/18/best[ext=mp4]/best'
     ydl_opts = {
     'format': 'bestaudio/best',
-    'cookiefile': 'cookies.txt'
+    'cookiefile': 'cookies.txt',
     'quiet': True,
     'noplaylist': True,
     'cachedir': False,
